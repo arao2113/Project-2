@@ -1,7 +1,7 @@
 # Project-2
 # Programmers: Ara Pirijanyan, Noel Battle, James Ngo, Matthew Eichler.
 
-# Project Name: PC Bang
+# Project Name: PC Parts aka PCP
 # PC Bang is a one stop shop for buying and selling used pc parts.
 # PC Bang uses Node and Express web server
 # Database is created and managed using MySQL with a Sequelize ORM
