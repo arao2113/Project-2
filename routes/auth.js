@@ -1,19 +1,52 @@
 var authController = require('../controllers/authcontroller.js');
  
-module.exports = function(app) {
- 
-    app.get('../views/signup.hbs', authController.signup);
-    app.get('../views/dashboard.hbs', isLoggedin, authController.dashboard);
-    app.get('../views/logout.hbs',authController.logout); //logs user out 
- 
-}
+module.exports = function(app, passport) {
 
-function isLoggedin(req, res, next) {
+    console.log(passport);
  
-    if (req.isAuthenticated())
+    app.get('/signup', authController.signup);
+    app.get('/signin', authController.signin);
+    app.get('/dashboard', isLoggedin, authController.dashboard);
+    app.get('/logout.',authController.logout); //logs user out 
+   
+
+    app.post('/signup', passport.authenticate('local', {
+        // successRedirect: '/dashboard',
+ 
+        failureRedirect: '/signup'
+        }),
+        function(req, res) {
+            console.log(req.body);
+            res.redirect('/dashboard');
+          });
+    // );
+
+
+
+
+
+    app.get('/dashboard', isLoggedin, authController.dashboard);
+ 
+ 
+ 
+    app.get('/logout', authController.logout);
+ 
+ 
+    app.post('/signin', passport.authenticate('local-signin', {
+            successRedirect: '/dashboard',
+ 
+            failureRedirect: '/signin'
+        }
+ 
+    ));
+    
+
+    function isLoggedin(req, res, next) {
+ 
+         if (req.isAuthenticated())
      
-        return next();
+            return next();
          
-    res.redirect('/signin');
- 
+        res.redirect('/signin');
+    }
 }

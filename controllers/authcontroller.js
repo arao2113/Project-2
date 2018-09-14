@@ -1,8 +1,10 @@
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
- 
-    res.render('signup');
+        hbsObject = {
+            hello: 'hi'
+        }
+    res.render('signup', hbsObject);
  
 }
 
