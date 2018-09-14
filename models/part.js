@@ -18,5 +18,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  Part.associate = function(models) {
+    Part.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Part;
 };
