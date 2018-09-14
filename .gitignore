@@ -2,3 +2,4 @@ node_modules
 .env
 NODE_ENV='development'
 config/config.json
+.DS_Store
