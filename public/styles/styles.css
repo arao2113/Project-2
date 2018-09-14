@@ -1,3 +1,9 @@
 .list-group-item {
   line-height: 2.5;
 }
+.mainheader {
+  padding: 30px;
+}
+ul { 
+  list-style-type: none; 
+}
