@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Diamond1",
+    "password": "asdfasdf",
     "database": "pcp_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Diamond1",
+    "password": "asdfasdf",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
@@ -17,7 +17,7 @@
   "production": {
     "username": "",
  
-    "password": "Diamond1",
+    "password": "asdfasdf",
  
     "database": "",
  
