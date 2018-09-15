@@ -1,11 +1,10 @@
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
-        hbsObject = {
-            hello: 'hi'
-        }
+    var hbsObject = {
+        hello: 'hi'
+    };
     res.render('signup', hbsObject);
- 
 }
 
 exports.signin = function(req, res) {
