@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS pcp_db;
+CREATE DATABASE pcp_db;
+
