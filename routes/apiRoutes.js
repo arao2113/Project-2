@@ -1,24 +1,43 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/parts", function(req, res) {
-    db.Part.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all parts
+  app.get("/api/part", function(req, res) {
+    db.Part.findAll({
+      include: [db.Part]
+    }).then(function(dbPart) {
+      res.json(dbPart);
     });
   });
 
-  // Create a new example
-  app.post("/api/parts", function(req, res) {
+  // Get a specific part
+  app.get("/api/part/:id", function(req, res) {
+    db.Part.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Part]
+    }).then(function(dbPart) {
+      res.json(dbPart);
+    });
+  });
+
+  // Create a new part for sale
+  app.post("/api/part", function(req, res) {
     db.Part.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+      res.json(dbPart);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/parts/:id", function(req, res) {
-    db.Part.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Delete or buy an item
+  app.delete("/api/part/:id", function(req, res) {
+    db.Part.destroy({ 
+      where: { 
+        id: req.params.id 
+      } 
+    }).then(function(dbPart) {
+      res.json(dbPart);
     });
   });
+
 };
