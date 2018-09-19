@@ -20,15 +20,17 @@ app.get("/post", function(req, res) {
   app.get("*", function(req, res) {
     res.render("404");
   });
-// Load page to login existing user
-app.get("/login", function(req, res) {
-  res.render("login");
-});
 
-// Load page to create a new user to be able to sell
-app.get("/createlogin", function(req, res) {
-  res.render("createlogin");
-});
+  
+// // made obsolete because of the auth.js
+// app.get("/login", function(req, res) {
+//   res.render("signin");
+// });
+
+// // Load page to create a new user to be able to sell
+// app.get("/createlogin", function(req, res) {
+//   res.render("signup");
+// });
 
 // Load error page
 };
