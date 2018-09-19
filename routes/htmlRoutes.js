@@ -23,6 +23,10 @@ module.exports = function(app) {
     res.render("post");
   })
 
+  app.get("/part", function (req, res) {
+    res.render("post")
+  })
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

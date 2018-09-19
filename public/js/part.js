@@ -7,26 +7,14 @@ var $imageURL = $("#image-url");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-    saveExample: function(example) {
+    saveExample: function(item) {
       return $.ajax({
         headers: {
           "Content-Type": "application/json"
         },
         type: "POST",
         url: "api/part",
-        data: JSON.stringify(example)
-      });
-    },
-    getExamples: function() {
-      return $.ajax({
-        url: "api/part",
-        type: "GET"
-      });
-    },
-    deleteExample: function(id) {
-      return $.ajax({
-        url: "api/part/" + id,
-        type: "DELETE"
+        data: JSON.stringify(item)
       });
     }
   };
@@ -37,7 +25,7 @@ var handleFormSubmit = function(event) {
     event.preventDefault();
   
     var item = {
-        category: itemCategory.val().trim(),
+        category: $itemCategory.val().trim(),
         name: $itemName.val().trim(),
         price: $itemPrice.val().trim(),
         url: $imageURL.val().trim()
@@ -48,12 +36,13 @@ var handleFormSubmit = function(event) {
         return;
     }
   
-    API.saveExample(item).then(function() {
-        refreshExamples();
-    });
+    API.saveExample(item)
   
     $itemCategory.val("");
     $itemName.val("");
     $itemPrice.val("");
     $imageURL.val("");
+    console.log("test")
 };
+
+$submitBtn.on("click", handleFormSubmit);
