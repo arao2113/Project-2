@@ -8,3 +8,18 @@ ul {
 body {
   background-image: url(images/qbkls.png)
 }
+
+.partsdiv {
+}
+
+.partcard {
+  max-width: 300px;
+  float: left;
+  margin: 10px 10px
+}
+
+.partimg {
+  max-width: 300px;
+  max-height: 200px;
+}
+
