@@ -5,15 +5,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: "CPU Processors",
       allowNull: false
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     price: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    user: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    description: {
+    url: {
       type: DataTypes.TEXT,
       allowNull: false
     }
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   Part.associate = function(models) {
     Part.belongsTo(models.User, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };

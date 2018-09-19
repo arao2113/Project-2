@@ -24,7 +24,7 @@ module.exports = function(app) {
 
   // Create a new part for sale
   app.post("/api/part", function(req, res) {
-    db.Part.create(req.body).then(function(dbExample) {
+    db.Part.create(req.body).then(function(dbPart) {
       res.json(dbPart);
     });
   });
