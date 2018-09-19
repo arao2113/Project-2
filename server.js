@@ -4,11 +4,11 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var passport   = require('passport');
 var session    = require('express-session');
-var db = require("./models");
+// var db = require("./models");
 var env=require('dotenv').load();
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 //passport
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret 
@@ -41,8 +41,11 @@ app.get('/', function(req, res) {
 
 
 var models = require("./models");
+
+console.log(models);
+
 //load passport strategies
-require("./config/passport/passport.js")(passport, models.user);
+require("./config/passport/passport.js")(passport, models.User);
 //Routes
 var authRoute = require('./routes/auth.js')(app, passport);
 
@@ -77,7 +80,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
+models.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

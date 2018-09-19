@@ -3,7 +3,8 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user) {
  
- 
+    console.log('Im the user', user);
+
     var User = user;
  
     var LocalStrategy = require('passport-local').Strategy;
@@ -49,15 +50,16 @@ passport.use( new LocalStrategy(
 
 
 
+
     function(req, email, password, done) {
 
         var generateHash = function(password) {
 
             return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
 
-        };
+        }
 
-
+        console.log(req.body);
 
         User.findOne({
             where: {
@@ -86,9 +88,9 @@ passport.use( new LocalStrategy(
 
                         password: userPassword,
 
-                        firstname: req.body.firstname,
+                        firstName: req.body.firstname,
 
-                        lastname: req.body.lastname
+                        lastName: req.body.lastname
 
                     };
 
@@ -141,6 +143,9 @@ passport.use('local-signin', new LocalStrategy(
             return bCrypt.compareSync(password, userpass);
  
         }
+
+        console.log(User);
+
 /*
         var generateHash = function(password) {
  

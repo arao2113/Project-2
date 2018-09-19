@@ -17,6 +17,15 @@ app.get("/login", function(req, res) {
   res.render("login");
 });
 
+// Load example page and pass in an example by id
+app.get("/example/:id", function(req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.render("example", {
+        example: dbExample
+      });
+    });
+  });
+
 // Load page to create a new user to be able to sell
 app.get("/createlogin", function(req, res) {
   res.render("createlogin");
@@ -26,4 +35,6 @@ app.get("/createlogin", function(req, res) {
 app.get("*", function(req, res) {
   res.render("404");
 });
+
 };
+

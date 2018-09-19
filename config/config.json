@@ -1,21 +1,32 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Diamond1",
     "database": "pcp_db",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  
   "test": {
     "username": "root",
-    "password": null,
+    "password": "Diamond1",
     "database": "testdb",
-    "host": "localhost",
+    "host": "",
     "dialect": "mysql",
     "logging": false
   },
+  
   "production": {
+    "username": "root",
+ 
+    "password": "Diamond1",
+ 
+    "database": "",
+ 
+    "host": "",
+
     "use_env_variable": "JAWSDB_URL",
+
     "dialect": "mysql"
   }
 }

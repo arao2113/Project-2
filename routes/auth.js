@@ -2,10 +2,10 @@ var authController = require('../controllers/authcontroller.js');
  
 module.exports = function(app, passport) {
 
-    console.log(passport);
+    // console.log(passport);
  
-    app.get('/signup', authController.signup);
-    app.get('/signin', authController.signin);
+    app.get('/signup', authController.signup);//route for signup
+    app.get('/signin', authController.signin);//route for signin
     app.get('/dashboard', isLoggedin, authController.dashboard);
     app.get('/logout.',authController.logout); //logs user out 
    
