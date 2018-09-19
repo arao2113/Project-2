@@ -1,27 +1,16 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Part.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        examples: dbExamples
-      });
-    });
-  });
+  
+// Load index page
+app.get("/", function(req, res) {
+  res.render("index");
+});
 
-  // Load example page and pass in an example by id
-  app.get("/part/:id", function(req, res) {
-    db.Part.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
-
-  app.get("/post", function (req, res) {
-    res.render("post");
-  })
+// Load page to sell a part
+app.get("/post", function(req, res) {
+  res.render("post");
+});
 
   app.get("/part", function (req, res) {
     res.render("post")
@@ -31,4 +20,13 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+// Load page to login existing user
+app.get("/login", function(req, res) {
+  res.render("login");
+});
+
+// Load page to create a new user to be able to sell
+app.get("/createlogin", function(req, res) {
+  res.render("createlogin");
+});
 };
