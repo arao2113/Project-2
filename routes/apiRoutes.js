@@ -4,7 +4,6 @@ module.exports = function(app) {
   // Get all parts
   app.get("/api/part", function(req, res) {
     db.Part.findAll({
-      include: [db.Part]
     }).then(function(dbPart) {
       res.json(dbPart);
     });
@@ -16,7 +15,6 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Part]
     }).then(function(dbPart) {
       res.json(dbPart);
     });

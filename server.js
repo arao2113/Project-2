@@ -33,11 +33,11 @@ app.set("view engine", "handlebars");
 
 
 
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
  
-  res.send('Welcome to Passport with Sequelize');
+//   res.send('Welcome to Passport with Sequelize');
 
-});
+// });
 
 
 var models = require("./models");
