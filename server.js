@@ -2,11 +2,18 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-
+var passport   = require('passport');
+var session    = require('express-session');
 var db = require("./models");
+var env=require('dotenv').load();
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+
+//passport
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,9 +29,44 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+
+
+
+
+// app.get('/', function(req, res) {
+ 
+//   res.send('Welcome to Passport with Sequelize');
+
+// });
+
+
+var models = require("./models");
+//load passport strategies
+require("./config/passport/passport.js")(passport, models.user);
+//Routes
+var authRoute = require('./routes/auth.js')(app, passport);
+
+
+//Sync Database
+ 
+models.sequelize.sync().then(function() {
+ 
+  console.log('Nice! Database looks fine')
+
+
+}).catch(function(err) {
+
+  console.log(err, "Something went wrong with the Database Update!")
+
+});
+
+
+
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/auth")(app, passport);
 
 var syncOptions = { force: false };
 
