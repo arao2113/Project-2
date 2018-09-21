@@ -1,17 +1,19 @@
-<div class="container-fluid mainheader shadow rounded p-3 bg-primary">
-    <h1 class="text-white text-center font-weight-bold">PCParts</h1>
+<div class="container-fluid mainheader shadow p-3">
+    <a href="#"><img class="mainlogo" src="../styles/images/facebook_cover_photo.jpg"></a>
 </div>
-<nav class="navbar sticky-top navbar-dark bg-dark container-fluid m-0">
-    <a href="" class="navbar-brand text-light">Log in</a>
-    <a href= "" class="navbar-brand text-light">Create an Account</a>
-    <a href="/post" class="navbar-brand text-light font-weight-bold"><u>Post a Part</u></a>
+<nav class="navbar sticky-top navbar-dark bg-dark container-fluid m-0 shadow">
+    <a href="" class="navbar-brand text-light text-center">Log in</a>
+    <a href="" class="navbar-brand text-light text-center">Create an Account</a>
+    <a href="/post" class="navbar-brand text-light font-weight-bold text-center"><u>Post a Part</u></a>
     <form class="form-inline">
       <input class="form-control mr-sm-2 bg-dark searchbar" type="search" placeholder="Search" aria-label="Search">
       <button class="text-primary btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
+<br>
+<h3 class="text-center font-weight-bold listingstitle"><u>Listings:</u></h3>
 <div class="container">
-  <h3 class="text-center">Listings</h3>
+  <br>
     <div class="row">
       <div id="example-list" class="partsdiv">
         {{#each Part}}
