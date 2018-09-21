@@ -33,12 +33,18 @@ module.exports = function(app, passport) {
  
  
     app.post('/signin', passport.authenticate('local-signin', {
-            successRedirect: '/dashboard',
+            // successRedirect: '/dashboard',
  
-            failureRedirect: '/signin'
-        }
- 
-    ));
+            failureRedirect: '/signin',
+            failureFlash: true
+        }),
+        function(req, res) {
+            console.log(req);
+            var message = req.user.message;
+            console.log(message);
+            console.log('hiii');
+            res.render('../views/dashboard', req.user);
+        });
     
 
     function isLoggedin(req, res, next) {

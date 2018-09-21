@@ -34,8 +34,6 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use( new LocalStrategy(
-    
- 
     {
 
         usernameField: 'email',
@@ -48,25 +46,20 @@ passport.use( new LocalStrategy(
 
     },
 
-
-
-
-    function(req, email, password, done) {
-
+    function(req, email, password, done){
         var generateHash = function(password) {
-
             return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-
-        }
+        };
 
         console.log(req.body);
+        console.log(email);
 
         User.findOne({
             where: {
                 email: email
             }
         }).then(function(user) {
-
+            console.log(user);
             if (user)
 
             {
@@ -93,7 +86,7 @@ passport.use( new LocalStrategy(
                         lastName: req.body.lastname
 
                     };
-
+                    //user.create adds new entries to the database
                 User.create(data).then(function(newUser, created) {
 
                     if (!newUser) {
@@ -146,13 +139,13 @@ passport.use('local-signin', new LocalStrategy(
 
         console.log(User);
 
-/*
+
         var generateHash = function(password) {
  
             return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
          
         };
- */
+ 
         User.findOne({
             where: {
                 email: email
@@ -160,23 +153,23 @@ passport.use('local-signin', new LocalStrategy(
         }).then(function(user) {
  
             if (!user) {
- 
+                    // console.log("Email does not exist");
                 return done(null, false, {
-                    message: 'Email does not exist'
-                });
+                    
+                    message: 'Email does not exist'});
  
             }
  
             if (!isValidPassword(user.password, password)) {
  
                 return done(null, false, {
-                    message: 'Incorrect password.'
-                });
- 
+                    message: 'Incorrect password.'});
             }
  
  
             var userinfo = user.get();
+            userinfo.message = "hello";
+            // console.log(userinfo);
             return done(null, userinfo);
  
  
@@ -185,8 +178,7 @@ passport.use('local-signin', new LocalStrategy(
             console.log("Error:", err);
  
             return done(null, false, {
-                message: 'Something went wrong with your Signin'
-            });
+                message: 'Something went wrong with your Signin'});
  
         });
  

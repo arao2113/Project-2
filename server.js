@@ -6,12 +6,14 @@ var passport   = require('passport');
 var session    = require('express-session');
 // var db = require("./models");
 var env=require('dotenv').load();
+const flash=require('connect-flash');
 
 var app = express();
 var PORT = process.env.PORT || 8080;
 
 //passport
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,6 +49,7 @@ console.log(models);
 //load passport strategies
 require("./config/passport/passport.js")(passport, models.User);
 //Routes
+app.use(flash());
 var authRoute = require('./routes/auth.js')(app, passport);
 
 
