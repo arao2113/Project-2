@@ -4,7 +4,6 @@ module.exports = function(app) {
   // Get all parts
   app.get("/api/part", function(req, res) {
     db.Part.findAll({
-      include: [db.Part]
     }).then(function(dbPart) {
       res.json(dbPart);
     });
@@ -16,7 +15,6 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Part]
     }).then(function(dbPart) {
       res.json(dbPart);
     });
@@ -24,7 +22,7 @@ module.exports = function(app) {
 
   // Create a new part for sale
   app.post("/api/part", function(req, res) {
-    db.Part.create(req.body).then(function(dbExample) {
+    db.Part.create(req.body).then(function(dbPart) {
       res.json(dbPart);
     });
   });
