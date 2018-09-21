@@ -12,6 +12,10 @@ body {
 .partsdiv {
 }
 
+.searchbar {
+  outline-color: #007bff;
+}
+
 .partcard {
   max-width: 300px;
   float: left;
