@@ -1,18 +1,21 @@
-<div id="home">
-  <div class="row bg-primary mainheader shadow rounded p-3">
-    <div class="col-md-3">
-      <input class="form-control v-alignwrapper" type="text" placeholder="Search" aria-label="Search">
-    </div>
-    <h1 class="text-white col-md-6 text-center font-weight-bold">PCParts</h1>
-    <ul class="col-md-3">
-      <li><a href="#" class="text-white">Log in:</a></li>
-      <li><a href="#" class="text-white">Create an Account:</a></li>
-    </ul>
-  </div>
-  <div class="container bg-white">
+<div class="container-fluid mainheader shadow p-3">
+    <a href="/"><img class="mainlogo" src="../styles/images/facebook_cover_photo.jpg"></a>
+</div>
+<nav class="navbar sticky-top navbar-dark bg-dark container-fluid m-0 shadow">
+    <a href="" class="navbar-brand text-light text-center">Log in</a>
+    <a href="" class="navbar-brand text-light text-center">Create an Account</a>
+    <a href="/post" class="navbar-brand text-light font-weight-bold text-center"><u>Post a Part</u></a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2 bg-dark searchbar" type="search" placeholder="Search" aria-label="Search">
+      <button class="text-primary btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<br>
+<br>
+  <div class="container bg-white post-container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h2 class="text-center">Post an PCPart!</h2>
+        <h2 class="text-center p-4 font-weight-bold postheader"><u>Post an PCpart!</u></h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Category</label>

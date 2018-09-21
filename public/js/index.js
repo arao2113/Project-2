@@ -1,5 +1,6 @@
 // Get references to page elements
 var $exampleList = $("#example-list");
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(item) {
